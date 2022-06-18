@@ -224,7 +224,15 @@ ggplot(g, aes(pfe$pfizer.Date)) +
 
 ![Capture d’écran 2022-06-18 à 03 56 21](https://user-images.githubusercontent.com/79210016/174420010-932247ef-9e39-4c52-bdd3-078b436709f1.png)
 
-# la 
+# La prévision 
+```R
+  #forecasting 
+  MAPE(GBM[,2],pfe$pfizer.Close)
+```
+![Capture d’écran 2022-06-18 à 14 39 34](https://user-images.githubusercontent.com/79210016/174440215-e2b3c27a-f7fd-479b-afc6-6093dfb44642.png)
+
+Le MAPE pour ce modèle s'avère être de 6,876 %. Autrement dit, la différence absolue moyenne entre la valeur prévue et la valeur réelle est de 6,467 %.
+ça veut dire qu'on a une prévisions précises
 
 # Simulation de l’ETF ARK Genomic Revolution
 ```R
@@ -311,4 +319,16 @@ z
 ```
 ![Capture d’écran 2022-06-18 à 13 44 08](https://user-images.githubusercontent.com/79210016/174438463-39af4464-debb-4639-a9c5-ec3d74334eb4.png)
 
+# La prévision 
+```R
+  MAPE(RGBM,tra)
+```
+
+![Capture d’écran 2022-06-18 à 14 55 23](https://user-images.githubusercontent.com/79210016/174441685-cb2c4901-8a7c-4801-bf3a-5e2ae3c00ad4.png)
+
+
+Le MAPE pour ce modèle s'avère être de 22.05%, donc on a une prévision raisonabe 
+
+# Conclusion 
+D'une manière générale, la modélisation des prix des actions consiste à modéliser de nouvelles informations sur les actions. Dans cette étude, la modélisation a été réalisée à travers la quantification d'une part stochastique dans l'expression générale du modèle. Les résultats de la simulation réalisée dans cette étude ne correspondent pas toujours à ceux du modèle théorique même si les hypothèses sur lesquelles repose le modèle respectent les règles des marchés financiers.
 
