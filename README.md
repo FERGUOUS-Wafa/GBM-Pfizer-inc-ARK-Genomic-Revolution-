@@ -107,7 +107,7 @@ qqline(r)
 
 Comme tous les points tombent approximativement le long de cette ligne de référence, nous pouvons supposer la normalité.
 
-###le carré de la serie des rendement 
+### le carré de la serie des rendement 
 ```R
 r2=r^2
 r2
@@ -202,3 +202,42 @@ ggplot(g, aes(pfe$pfizer.Date)) +
 arkg= read_excel("ARKG .xlsx",col_types = c("date", "numeric", "numeric", "numeric", "numeric", "numeric","numeric", "numeric", "numeric", "numeric", "numeric"))
 head(arkg)
 ```
+![Capture d’écran 2022-06-18 à 12 05 27](https://user-images.githubusercontent.com/79210016/174435253-a80f36e5-78cc-485c-8abd-4096d8b31220.png)
+
+# la somme pondérée des actifs 
+```R
+Markg=arkg[,2:11]
+Mark=as.matrix(Markg)
+Poid=c(0.339,0.925,0.51,0.427,0.427,0.396,0.377,0.364,0.35,0.346)
+tra=Mark%*%Poid
+head(tra)
+```
+![Capture d’écran 2022-06-18 à 12 06 31](https://user-images.githubusercontent.com/79210016/174435252-2a2c2811-216e-4aad-abfe-21e29e641615.png)
+
+#  les rendement 
+```R
+j=1
+R=seq((length(tra)-1))
+n=length(R)
+n
+for (i in 1:n){
+R[i]= log(tra[j+1])-log(tra[j])
+j=j+1
+} 
+head(R)
+```
+![Capture d’écran 2022-06-18 à 12 06 55](https://user-images.githubusercontent.com/79210016/174435251-0eb9461f-5429-4615-9a2a-2d501a9d11a6.png)
+
+```R
+summary(R)
+```
+![Capture d’écran 2022-06-18 à 12 07 31](https://user-images.githubusercontent.com/79210016/174435250-a66e27d9-9e7f-4add-909b-0ea2f1f10aee.png)
+
+# Les estimateurs du maximum de vraisemblence 
+```R
+![Capture d’écran 2022-06-18 à 12 07 57](https://user-images.githubusercontent.com/79210016/174435249-021803c2-5729-4399-9d1c-7290f153b809.png)
+```
+la moyenne est negatif ce qui signifie que
+
+
+
