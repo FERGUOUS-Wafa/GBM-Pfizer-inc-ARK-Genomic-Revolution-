@@ -2,7 +2,33 @@
 
 Un GBM est un processus stochastique en temps continu dans lequel une quantité suit un mouvement brownien (processus de Wiener) avec dérive. C'est un exemple important de processus stochastiques satisfaisant une équation différentielle stochastique (SDE), en particulier, il est utilisé en finance mathématique pour modéliser les cours des actions dans le modèle Black-Scholes.
 
+l'équation différentielle stochastique est la suivante:
 
+![Capture d’écran 2022-06-18 à 14 17 55](https://user-images.githubusercontent.com/79210016/174439490-f4655888-67f9-44ba-876a-41c51be2cbe2.png)
+
+les deux sections sont divisées par 𝑆𝑡 de sorte que :
+![Capture d’écran 2022-06-18 à 14 20 06](https://user-images.githubusercontent.com/79210016/174439535-46cae8e5-e8c1-456d-95c1-74de44488c74.png)
+
+basée sur le lemme d'Ito, l'équation peut être écrite comme suit : 
+
+![Capture d’écran 2022-06-18 à 14 18 19](https://user-images.githubusercontent.com/79210016/174439488-552b8582-1945-4924-909b-3e2b2ae1edd6.png)
+
+donc 
+![Capture d’écran 2022-06-18 à 14 17 48](https://user-images.githubusercontent.com/79210016/174439491-44a56684-7d87-493c-ba3b-24d7d697d719.png)
+
+pour S(t)>0
+
+![Capture d’écran 2022-06-18 à 14 24 53](https://user-images.githubusercontent.com/79210016/174439734-de217da1-d783-48c7-b7f6-89f62e2f6457.png)
+
+et pour K=1,2,3,...
+
+![Capture d’écran 2022-06-18 à 14 25 00](https://user-images.githubusercontent.com/79210016/174439733-892ec3bb-aca5-4956-8164-040ac824c1cc.png)
+
+et comme $W_t_k - W_t_k-1 
+et suit une distebution normale 
+alors 
+
+![Capture d’écran 2022-06-18 à 14 25 07](https://user-images.githubusercontent.com/79210016/174439730-72968b39-1cda-45aa-bed5-0e255139ff31.png)
 
 
 Nous commencerons par importer quelques packages utiles:
@@ -198,6 +224,8 @@ ggplot(g, aes(pfe$pfizer.Date)) +
 
 ![Capture d’écran 2022-06-18 à 03 56 21](https://user-images.githubusercontent.com/79210016/174420010-932247ef-9e39-4c52-bdd3-078b436709f1.png)
 
+# la 
+
 # Simulation de l’ETF ARK Genomic Revolution
 ```R
 arkg= read_excel("ARKG .xlsx",col_types = c("date", "numeric", "numeric", "numeric", "numeric", "numeric","numeric", "numeric", "numeric", "numeric", "numeric"))
@@ -266,7 +294,7 @@ RGBM=matrix(ncol = 1, nrow = s)
 
     }
 ```
-![Capture d’écran 2022-06-18 à 12 11 51](https://user-images.githubusercontent.com/79210016/174435246-31a60a90-ad6a-40c7-9ec9-20edae9c9021.png)
+![Capture d’écran 2022-06-18 à 13 43 56](https://user-images.githubusercontent.com/79210016/174438467-558f4e24-a686-4198-8a92-ce336066311b.png)
 
 # Le graphe des donnée réelles de l'EFT avec la trajectoire moyenne 
 ```R
@@ -281,7 +309,6 @@ z=ggplot(g, aes(arkg$Date) ) +
   ylab("price")
 z
 ```
-![Capture d’écran 2022-06-18 à 12 12 57](https://user-images.githubusercontent.com/79210016/174435243-548acae3-8469-481d-b915-bdbbcc6689a1.png)
-
+![Capture d’écran 2022-06-18 à 13 44 08](https://user-images.githubusercontent.com/79210016/174438463-39af4464-debb-4639-a9c5-ec3d74334eb4.png)
 
 
