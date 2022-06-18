@@ -113,7 +113,6 @@ Box.test(r2,lag=1)
 ```
 # Simulation d’un mouvement brownien géométrique
 L'EDS (équation différentielle stochastique) du processus est :
-![first equation]{https://www.i2ocr.com/download/62ad2dfe1dc52_IMG_English_rdngu52c6bd85125.png_preview.jpg}
 
 # Estimation de dérive et de volatilité 
 
@@ -167,4 +166,3 @@ ggplot(g, aes(pfe$pfizer.Date)) +
   geom_line(aes(y=GBM[,12]), colour="red") +  
   geom_line(aes(y=pfe$pfizer.Close), colour="green")  
   ```
-  
