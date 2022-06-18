@@ -4,6 +4,7 @@ Un GBM est un processus stochastique en temps continu dans lequel une quantité 
 
 
 
+
 Nous commencerons par importer quelques packages utiles:
 # Installation des packages 
 ```R
@@ -197,7 +198,7 @@ ggplot(g, aes(pfe$pfizer.Date)) +
 
 ![Capture d’écran 2022-06-18 à 03 56 21](https://user-images.githubusercontent.com/79210016/174420010-932247ef-9e39-4c52-bdd3-078b436709f1.png)
 
-# Simulation de l’ETF ARK Genomic Revolutio
+# Simulation de l’ETF ARK Genomic Revolution
 ```R
 arkg= read_excel("ARKG .xlsx",col_types = c("date", "numeric", "numeric", "numeric", "numeric", "numeric","numeric", "numeric", "numeric", "numeric", "numeric"))
 head(arkg)
@@ -212,7 +213,7 @@ Poid=c(0.339,0.925,0.51,0.427,0.427,0.396,0.377,0.364,0.35,0.346)
 tra=Mark%*%Poid
 head(tra)
 ```
-![Capture d’écran 2022-06-18 à 12 06 31](https://user-images.githubusercontent.com/79210016/174435252-2a2c2811-216e-4aad-abfe-21e29e641615.png)
+![Capture d’écran 2022-06-18 à 12 06 55](https://user-images.githubusercontent.com/79210016/174435251-0eb9461f-5429-4615-9a2a-2d501a9d11a6.png)
 
 #  les rendement 
 ```R
@@ -226,18 +227,61 @@ j=j+1
 } 
 head(R)
 ```
-![Capture d’écran 2022-06-18 à 12 06 55](https://user-images.githubusercontent.com/79210016/174435251-0eb9461f-5429-4615-9a2a-2d501a9d11a6.png)
+![Capture d’écran 2022-06-18 à 12 07 31](https://user-images.githubusercontent.com/79210016/174435250-a66e27d9-9e7f-4add-909b-0ea2f1f10aee.png)
 
 ```R
 summary(R)
 ```
-![Capture d’écran 2022-06-18 à 12 07 31](https://user-images.githubusercontent.com/79210016/174435250-a66e27d9-9e7f-4add-909b-0ea2f1f10aee.png)
+![Capture d’écran 2022-06-18 à 12 07 57](https://user-images.githubusercontent.com/79210016/174435249-021803c2-5729-4399-9d1c-7290f153b809.png)
 
 # Les estimateurs du maximum de vraisemblence 
 ```R
-![Capture d’écran 2022-06-18 à 12 07 57](https://user-images.githubusercontent.com/79210016/174435249-021803c2-5729-4399-9d1c-7290f153b809.png)
+# la moyenne des rendement 
+Rmoy=mean(R)
+Rmoy
+#l'écart type
+SR=sd(R)
+SR2=SR^2
+#mu estimé 
+m=(abs(Rmoy)/h)+(SR2/2*h)
+m
+#sigma estimé
+sig=SR/sqrt(h)
+sig
 ```
-la moyenne est negatif ce qui signifie que
+![Capture d’écran 2022-06-18 à 12 08 29](https://user-images.githubusercontent.com/79210016/174435248-79fd3054-7d9f-4911-8874-4a8e42a6e965.png)
+
+# Simulation de la trajectoire moyenne de ETF ARK genomic 
+```R
+S0 = tra[1]
+s = length(tra)
+t=1
+dt=t/s
+RGBM=matrix(ncol = 1, nrow = s)
+
+  RGBM[1,1]= S0
+    for (i in 2:s) {
+        x=rnorm(1,0,1)
+       RGBM[i,1]=RGBM[i-1,1]*exp(((abs(m)-(sig^2)/2)*dt)+(sig*x*sqrt(dt)))
+
+    }
+```
+![Capture d’écran 2022-06-18 à 12 11 51](https://user-images.githubusercontent.com/79210016/174435246-31a60a90-ad6a-40c7-9ec9-20edae9c9021.png)
+
+# Le graphe des donnée réelles de l'EFT avec la trajectoire moyenne 
+```R
+plot(arkg$Date,RGBM,"l",col="#69b3a2",,main="mean path simulated for ETF ARK genomic  ",xlab="days",ylab=" price")
+g=data.frame(arkg$Date,RGBM,tra)
+require(ggplot2)
+z=ggplot(g, aes(arkg$Date) ) +   
+    # basic graphical object
+  geom_line(aes(y=RGBM), colour="red") +  
+  geom_line(aes(y=tra), colour="green")  +
+  xlab("days") + 
+  ylab("price")
+z
+```
+![Capture d’écran 2022-06-18 à 12 12 57](https://user-images.githubusercontent.com/79210016/174435243-548acae3-8469-481d-b915-bdbbcc6689a1.png)
 
 
 
