@@ -132,6 +132,7 @@ Box.test(r2,lag=1)
 ![Capture d’écran 2022-06-18 à 04 03 51](https://user-images.githubusercontent.com/79210016/174420365-197219be-2392-4d80-a5b8-22ac4dd7edb9.png)
 
 L'EDS (équation différentielle stochastique) du processus est :
+$dS_t=muS_t dt + sigma S_t dW_t$
 
 # Estimation de dérive et de volatilité 
 
@@ -195,3 +196,9 @@ ggplot(g, aes(pfe$pfizer.Date)) +
 ```
 
 ![Capture d’écran 2022-06-18 à 03 56 21](https://user-images.githubusercontent.com/79210016/174420010-932247ef-9e39-4c52-bdd3-078b436709f1.png)
+
+# Simulation de l’ETF ARK Genomic Revolutio
+```R
+arkg= read_excel("ARKG .xlsx",col_types = c("date", "numeric", "numeric", "numeric", "numeric", "numeric","numeric", "numeric", "numeric", "numeric", "numeric"))
+head(arkg)
+```
