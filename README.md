@@ -88,7 +88,10 @@ p=dygraph(PFE , main="Pfizer close price ", ,xlab="days",ylab=" price") %>%
  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.2, hideOnMouseOut = FALSE)  
 p
 ```
-il y a une assez belle tendance . Il y a quelques baisses, mais la dérive semble plutôt positive.
+
+![Capture d’écran 2022-06-18 à 15 27 44](https://user-images.githubusercontent.com/79210016/174442963-0012e68d-caa0-430b-8567-f2d48400bf1f.png)
+
+il y a une tendance . Il y a quelques baisses, mais la dérive semble plutôt positive.
 
 # Les rendements 
 il est très utile de travailler avec les rendements et non avec le prix lui-même.
