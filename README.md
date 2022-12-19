@@ -330,7 +330,6 @@ z
 ![Capture d’écran 2022-06-18 à 14 55 23](https://user-images.githubusercontent.com/79210016/174441685-cb2c4901-8a7c-4801-bf3a-5e2ae3c00ad4.png)
 
 
-Le MAPE pour ce modèle est de 22.05%, donc on a une prévision raisonabe 
 
 # Conclusion 
 D'une manière générale, la modélisation des prix des actions consiste à modéliser de nouvelles informations sur les actions. Dans cette étude, la modélisation a été réalisée à travers la quantification d'une part stochastique dans l'expression générale du modèle. Les résultats de la simulation réalisée dans cette étude ne correspondent pas toujours à ceux du modèle théorique même si les hypothèses sur lesquelles repose le modèle respectent les règles des marchés financiers.
